@@ -42,140 +42,29 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-        <section data-markdown="slides/1-intro.md"></section>
+        <section data-markdown="slides/0-intro.md"></section>
+        
         <section>
-          <section data-markdown="slides/2-conceptual-overview.md"></section>
-          <section data-markdown="slides/2.2-conceptual-overview.md"></section>
-          <section data-markdown="slides/2.3-conceptual-overview.md"></section>
-				  <section data-markdown="slides/2.4-conceptual-overview.md"></section>
+          <section data-markdown="slides/1-conceptual-overview.md"></section>
+          <section data-markdown="slides/1.1-conceptual-overview.md"></section>
+          <section data-markdown="slides/1.2-conceptual-overview.md"></section>
+				  <section data-markdown="slides/1.3-conceptual-overview.md"></section>
+        </section>
+
+        <section data-markdown="slides/2-example-data-binding.md"></section>
+
+        <section>
+          <section data-markdown="slides/3-example-controller.md"></section>
+          <section data-markdown="slides/3.1-example-controller.md"></section>
         </section>
 
         <section>
-          <h2>Example: Data Binding</h2>
-          <pre><code data-trim contenteditable>
-<div ng-app ng-init="qty=1;cost=2">
-  <b>Invoice:</b>
-  <div>
-    Quantity: <input type="number" ng-model="qty" required >
-  </div>
-  <div>
-    Costs: <input type="number" ng-model="cost" required >
-  </div>
-  <div>
-    <b>Total:</b> {{qty * cost | currency}}
-  </div>
-</div>
-          </code></pre>
-
-        <iframe src="examples/data-bind/index.html"></iframe>
-          
-        </section>
-
-        <section>
-          <section>
-            <h2>Example: Controller</h2>
-            index.html
-            <pre><code data-trim contenteditable>
-<div ng-app="invoice" ng-controller="InvoiceController">
-  <b>Invoice:</b>
-  <div>
-    Quantity: <input type="number" ng-model="qty" required >
-  </div>
-  <div>
-    Costs: <input type="number" ng-model="cost" required >
-    <select ng-model="inCurr">
-      <option ng-repeat="c in currencies">{{c}}</option>
-    </select>
-  </div>
-  <div>
-    <b>Total:</b>
-    <span ng-repeat="c in currencies">
-      {{total(c) | currency:c}}
-    </span>
-    <button class="btn" ng-click="pay()">Pay</button>
-  </div>
-</div>
-            </code></pre>
-          </section>
-
-          <section>
-            app.js
-            <pre><code data-trim contenteditable>
-angular.module('invoice', [])
-  .controller('InvoiceController', function($scope) {
-    $scope.qty = 1;
-    $scope.cost = 2;
-    $scope.inCurr = 'EUR';
-    $scope.currencies = ['USD', 'EUR', 'CNY'];
-    $scope.usdToForeignRates = {
-      USD: 1,
-      EUR: 0.74,
-      CNY: 6.09
-    };
-
-    $scope.total = function total(outCurr) {
-      return $scope.convertCurrency($scope.qty * $scope.cost, $scope.inCurr, outCurr);
-    };
-    $scope.convertCurrency = function convertCurrency(amount, inCurr, outCurr) {
-      return amount * $scope.usdToForeignRates[outCurr] / $scope.usdToForeignRates[inCurr];
-    };
-    $scope.pay = function pay() {
-      window.alert("Thanks!");
-    };
-  });
-            </code></pre>
-            <iframe src="examples/controller/index.html"></iframe>
-          </section>
-        </section>
-
-        <section>
-          <section>
-            <h2>Example: Service</h2>
-            finance.js
-            <pre><code data-trim contenteditable>
-angular.module('finance', [])
-  .factory('currencyConverter', function() {
-    var usdToForeignRates = {
-      USD: 1,
-      EUR: 0.74,
-      CNY: 6.09
-    };
-
-    return {
-      currencies: ['USD', 'EUR', 'CNY'],
-      convert: function (amount, inCurr, outCurr) {
-        return amount * usdToForeignRates[outCurr] / usdToForeignRates[inCurr];
-      }
-    };
-  });
-            </pre></code>
-          </section>
-          <section>
-            app.js
-            <pre><code data-trim contenteditable>
-angular.module('invoice', ['finance'])
-  .controller('InvoiceController', function($scope, currencyConverter) {
-    $scope.qty = 1;
-    $scope.cost = 2;
-    $scope.inCurr = 'EUR';
-    $scope.currencies = currencyConverter.currencies;
-
-    $scope.total = function total(outCurr) {
-      return currencyConverter.convert($scope.qty * $scope.cost, $scope.inCurr, outCurr);
-    };
-    $scope.pay = function pay() {
-      window.alert("Thanks!");
-    };
-  });
-            </pre></code>
-            <iframe src="examples/service/index.html"></iframe>
-          </section>
+          <section data-markdown="slides/4-example-service.md"></section>
+          <section data-markdown="slides/4.1-example-service.md"></section>
         </section>
 
 				<section data-markdown="slides/the-end.md"></section>
-
 			</div>
-
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
