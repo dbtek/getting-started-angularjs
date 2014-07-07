@@ -7,6 +7,7 @@ Getting Started with Angular JS Presentation. Currently being worked on, not com
 To run reveal.js presentation:
 
 ```bash
+  $ npm install
   $ grunt serve
 ```
 
