@@ -1,9 +1,11 @@
-getting-started-angularjs
+Getting Started with AngularJs
 =========================
 
-Getting Started with Angular JS Presentation. Currently being worked on, not completed yet. 
+Introduction to AngularJs, basic concepts and components.
 
-###Run
+###[Head to Slides](http://dbtek.github.io/getting-started-angularjs)
+
+##Run Locally
 To run reveal.js presentation:
 
 ```bash
@@ -11,8 +13,11 @@ To run reveal.js presentation:
   $ grunt serve
 ```
 
-###License
+##Credits
+- Angular JS Developer Guide
+
+##License
 [MIT](http://opensource.org/licenses/MIT)
 
-###Author
-İsmail Demirbilek [@dbtek](https://twitter.com/dbtek)
+##Author
+İsmail Demirbilek - [@dbtek](https://twitter.com/dbtek)
